@@ -1,21 +1,16 @@
-<template>
-  <div>
-    <h1>Index Page</h1>
-    <NuxtLink to="/demo">Go to Demo Page</NuxtLink>
-    <main>
-      {{ pending }}
-      <a-space>
-        <a-button type="primary" @click="() => refresh()">Refresh</a-button>
-        <a-button type="primary" @click="() => id++">{{ id }}</a-button>
-      </a-space>
-    </main>
-    <main>
-      {{ testData }}
+<template lang="pug">
+a-row(:gutter="[16, 16]")
+  a-col(:span="6")
+    a-card(title="Welcome" size="small")
+      a-space(:size="20")
+        NuxtLink(to="/demo") Demo Page
+        NuxtLink(to="/demo/foo") Foo Page
 
-      <div class="box"></div>
-      <div class="box-1"></div>
-    </main>
-  </div>
+  a-col(:span="6")
+    a-card(title="Request" size="small")
+      a-upload(:beforeUpload="beforeUpload" :show-file-list="false")
+        a-button(type="primary") Click to upload
+        pre {{ JSON.stringify(state.fileResult, null, 2) }}
 </template>
 
 <script lang="ts" setup>
@@ -25,22 +20,23 @@ useHead({
   title: 'Index Page',
 });
 
-const id = ref(0);
-
-const { data, refresh, pending } = await useFetch(`/api/foo`, {
-  query: { id },
-  server: false,
-  immediate: false,
-});
-
-const { data: testData } = await useFetch(`/api/test`, {
-  method: 'POST',
-  body: {
-    name: 'Lily',
+const state = reactive({
+  count: 0,
+  fileResult: {
+    name: '',
+    size: 0,
   },
 });
 
-onMounted(() => {});
+async function beforeUpload(file: File) {
+  const formData = new FormData();
+  formData.append('msg', 'hello');
+  formData.append('file', file, file.name);
+  const res = await $fetch('/api/upload', { method: 'POST', body: formData });
+  state.fileResult.name = res.name!;
+
+  return false;
+}
 </script>
 
 <style scoped>
