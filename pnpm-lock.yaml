@@ -24,6 +24,9 @@ importers:
       '@ant-design-vue/nuxt':
         specifier: ^1.4.2
         version: 1.4.2(ant-design-vue@4.2.3(vue@3.4.29))(rollup@4.18.0)(vue@3.4.29)
+      '@prettier/plugin-pug':
+        specifier: ^3.0.0
+        version: 3.0.0(prettier@3.3.2)
       less:
         specifier: ^4.2.0
         version: 4.2.0
@@ -861,6 +864,12 @@ packages:
 
   '@polka/url@1.0.0-next.25':
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
+
+  '@prettier/plugin-pug@3.0.0':
+    resolution: {integrity: sha512-ERMMvGSJK/7CTc8OT7W/dtlV43sytyNeiCWckN0DIFepqwXotU0+coKMv5Wx6IWSNj7ZSjdNGBAA1nMPi388xw==}
+    engines: {node: ^16.13.0 || >=18.0.0, npm: '>=7.10.0'}
+    peerDependencies:
+      prettier: ^3.0.0
 
   '@rollup/plugin-alias@5.1.0':
     resolution: {integrity: sha512-lpA3RZ9PdIG7qqhEfv79tBffNaoDuukFDrmhLqg9ifv99u/ehn+lOg30x2zmhf8AQqQUZaMk/B9fZraQ6/acDQ==}
@@ -3154,6 +3163,11 @@ packages:
     resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
     engines: {node: ^10 || ^12 || >=14}
 
+  prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   pretty-bytes@6.1.1:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
@@ -5070,6 +5084,11 @@ snapshots:
     optional: true
 
   '@polka/url@1.0.0-next.25': {}
+
+  '@prettier/plugin-pug@3.0.0(prettier@3.3.2)':
+    dependencies:
+      prettier: 3.3.2
+      pug-lexer: 5.0.1
 
   '@rollup/plugin-alias@5.1.0(rollup@4.18.0)':
     dependencies:
@@ -7759,6 +7778,8 @@ snapshots:
       nanoid: 3.3.7
       picocolors: 1.0.1
       source-map-js: 1.2.0
+
+  prettier@3.3.2: {}
 
   pretty-bytes@6.1.1: {}
 
